@@ -1,0 +1,14 @@
+services:
+  rtmp-hls:
+    image: alfg/nginx-rtmp:latest
+    container_name: rtmp-hls
+    restart: unless-stopped
+    ports:
+      - "1935:1935"
+      - "8080:80"
+    volumes:
+      - ./nginx/nginx.conf.template:/etc/nginx/nginx.conf.template
+      - hls:/opt/data
+
+volumes:
+  hls:
